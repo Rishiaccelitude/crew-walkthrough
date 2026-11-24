@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Crew Walkthrough</title>
+</head>
+<body>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#F7FAF7; --surface:#FFFFFF; --ink:#16211B; --muted:#5B6A61;
+    --line:rgba(22,33,27,.14); --line-soft:rgba(22,33,27,.07);
+    --green:#178A4C; --green-soft:rgba(23,138,76,.12);
+    --gold:#A8740F; --chipbg:rgba(22,33,27,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1613; --surface:#161F1A; --ink:#E7EFE9; --muted:#9BAAA0;
+      --line:rgba(231,239,233,.18); --line-soft:rgba(231,239,233,.08);
+      --green:#3ED47E; --green-soft:rgba(62,212,126,.14);
+      --gold:#E8B04B; --chipbg:rgba(231,239,233,.09);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0F1613; --surface:#161F1A; --ink:#E7EFE9; --muted:#9BAAA0;
+    --line:rgba(231,239,233,.18); --line-soft:rgba(231,239,233,.08);
+    --green:#3ED47E; --green-soft:rgba(62,212,126,.14);
+    --gold:#E8B04B; --chipbg:rgba(231,239,233,.09);
+  }
+  *{box-sizing:border-box}
+  body{background:var(--paper); color:var(--ink);
+    font-family:"Public Sans",system-ui,sans-serif; font-size:16px; line-height:1.6; margin:0}
+  .wrap{max-width:62rem; margin:0 auto; padding:3.5rem 1.5rem 6rem}
+  h1,h2{font-family:"Barlow Condensed","Arial Narrow",sans-serif; line-height:1.08; text-wrap:balance; margin:0; text-transform:uppercase}
+  h1{font-size:3.6rem; font-weight:700}
+  h2{font-size:1.8rem; font-weight:600; margin-bottom:.3rem}
+  .eyebrow{font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--green); margin-bottom:.3rem}
+  .lede{font-size:1.1rem; color:var(--muted); max-width:42rem}
+  section{margin-top:3.5rem; border-top:1px solid var(--line); padding-top:1.6rem}
+  .flow{display:grid; grid-template-columns:minmax(16rem,22rem) 1fr; gap:2rem; align-items:start}
+  @media (max-width:760px){ .flow{grid-template-columns:1fr} h1{font-size:2.6rem} }
+  .shots{display:flex; gap:1.2rem; flex-wrap:wrap}
+  figure{margin:0}
+  figure img{width:250px; max-width:100%; border-radius:26px; border:1px solid var(--line);
+    box-shadow:0 10px 30px rgba(0,0,0,.10); display:block}
+  figcaption{font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--muted); margin-top:.5rem; text-align:center}
+  p{margin:.6rem 0}
+  ul{padding-left:1.1rem; margin:.6rem 0}
+  li{margin:.35rem 0}
+  li::marker{color:var(--green)}
+  .id{font-family:"IBM Plex Mono",monospace; font-size:.75rem; background:var(--chipbg);
+      padding:.08rem .38rem; border-radius:.25rem; white-space:nowrap}
+  .check{background:var(--surface); border:1px solid var(--line); border-radius:14px;
+    padding: .9rem 1.1rem; margin-top:.9rem}
+  .check b{font-family:"Barlow Condensed",sans-serif; text-transform:uppercase; letter-spacing:.05em; font-size:.95rem; color:var(--gold)}
+  .muted{color:var(--muted)}
+  footer{margin-top:4rem; border-top:1px solid var(--line); padding-top:1rem; font-size:.82rem; color:var(--muted)}
+  a{color:var(--green)}
+  .notes{font-size:.9rem}
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Built & verified · Nov 24, 2026 · real simulator captures</div>
+  <h1>Crew Walkthrough</h1>
+  <p class="lede">Every flow below is the actual app running against the real server — each screen is a simulator capture from a seeded three-person crew. Drop change requests into the ROADMAP Inbox and they'll be built. The tiny <span class="id">reminders:64</span> label and the two pill buttons under the strip are dev-only chrome; they don't ship.</p>
+
+  <section>
+    <div class="eyebrow">F1 · First run</div>
+    <div class="flow">
+      <div>
+        <h2>Welcome → signed in</h2>
+        <p>Three screens, then done: sign in (Apple), your name, the honest Health ask. The circles on the Welcome screen animate through a week filling green.</p>
+        <ul class="notes">
+          <li><span class="id">A1</span> Sign in with Apple; Google verifies server-side (SDK lands at TestFlight).</li>
+          <li><span class="id">A3</span> Health is auto-pull only — hand-typed entries never count anywhere.</li>
+          <li>Skipping Health leaves a working app with a connect banner.</li>
+        </ul>
+        <div class="check"><b>Verified</b> — Onboarding UI test drives the full flow against the live server.</div>
+      </div>
+      <div class="shots">
+        <figure><img src="shots/01-welcome.png" alt="Welcome screen"><figcaption>Welcome</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">F8 · Home</div>
+    <div class="flow">
+      <div>
+        <h2>Your crews at a glance</h2>
+        <p>Each row: crew, streak, your seven mini circles, and — when you broke last week — the quiet gold <em>owe</em> chip until it's settled.</p>
+        <ul class="notes">
+          <li><span class="id">A5</span> Mini week strips live on every row.</li>
+          <li><span class="id">S3</span> "owe $20" chip stays until confirmed or waived.</li>
+          <li>Profile (top-left): name, Venmo/Cash App handles, personal streaks, delete.</li>
+        </ul>
+      </div>
+      <div class="shots">
+        <figure><img src="shots/02-home.png" alt="Home crew list"><figcaption>Home</figcaption></figure>
+        <figure><img src="shots/12-profile.png" alt="Profile sheet"><figcaption>Profile</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">F2 · Create a crew</div>
+    <div class="flow">
+      <div>
+        <h2>Adjust, don't build</h2>
+        <p>Identity (name, emoji, accent, the crew clock) then the contract — every rule preset to a good default. A creator who touches nothing has a great crew. $0 stake is pride mode.</p>
+        <ul class="notes">
+          <li><span class="id">C2</span> Stake presets, minimum workout, passes, lock time; calorie floor and stacking behind one disclosure.</li>
+          <li>Share sheet auto-opens once after create (<span class="id">J1</span>).</li>
+        </ul>
+        <div class="check"><b>Verified</b> — CreateCrew UI test builds a crew with untouched defaults.</div>
+      </div>
+      <div class="shots">
+        <figure><img src="shots/03-create.png" alt="Create crew"><figcaption>New crew</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">F4 · Commit & lock</div>
+    <div class="flow">
+      <div>
+        <h2>Your week, your terms</h2>
+        <p>One decision: specific days (tap the circles) or flexible (a big rounded number). Frozen at Sunday-night lock; the lock posts a card to the chat naming who's in.</p>
+        <ul class="notes">
+          <li><span class="id">K1/K2</span> Every member independent — Mon/Wed/Fri next to "any 4".</li>
+          <li><span class="id">K4</span> No commitment by lock → last week's rolls over, announced.</li>
+          <li><span class="id">G2</span> A raised stake blocks the commit sheet until you tap "I'm in".</li>
+        </ul>
+        <div class="check"><b>Verified</b> — CommitFlow UI test: commit → lock → workout fills the strip live.</div>
+      </div>
+      <div class="shots">
+        <figure><img src="shots/05-commit.png" alt="Commit sheet"><figcaption>Commit sheet</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">F5 · The week — chat is home</div>
+    <div class="flow">
+      <div>
+        <h2>Workouts post themselves</h2>
+        <p>The glass strip holds your circles; chat carries the crew. The moment Apple Health syncs a qualifying workout, the circle springs green (with the one sanctioned haptic) and a card lands in the chat with the source badge. Your own card offers "Add a photo" for 24 hours.</p>
+        <ul class="notes">
+          <li><span class="id">W4</span> Source always shown; manual entries labeled and never counted.</li>
+          <li><span class="id">P6</span> One real workout counts in every crew you're in (Jake's ride posted to both his crews).</li>
+          <li><span class="id">V6</span> Long-press your ring → play a pass; it goes neutral, never retroactive.</li>
+          <li>Reactions, photos, author-delete; system cards are permanent (<span class="id">W5</span>).</li>
+        </ul>
+        <div class="check"><b>Verified</b> — Chat UI test: a second user's messages land live over the websocket, both directions; FakeHealth UI test: a 35-min run flips today green.</div>
+      </div>
+      <div class="shots">
+        <figure><img src="shots/06-chat.png" alt="Crew chat"><figcaption>Crew · light</figcaption></figure>
+        <figure><img src="shots/13-chat-dark.png" alt="Crew chat dark"><figcaption>Crew · dark</figcaption></figure>
+        <figure><img src="shots/07-member.png" alt="Member week"><figcaption>Member week + pass</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">W8 · Crew details</div>
+    <div class="flow">
+      <div>
+        <h2>One tap from the chat corner</h2>
+        <p>The ⓘ button opens the whole state: every member's week against the goal they chose, this week's pinned rules, the ledger, history, and the governance controls.</p>
+        <ul class="notes">
+          <li><span class="id">G1</span> Captain edits open only in the recap window (between the weekly recap and the next lock); changes post to chat as a diff card.</li>
+          <li><span class="id">G3</span> Leaving mid-week while locked in counts as breaking — said plainly on the confirm.</li>
+          <li><span class="id">G4/G5</span> Remove (next week), transfer captaincy, archive once debts settle.</li>
+        </ul>
+        <div class="check"><b>Verified</b> — Governance UI test: stake raise in the recap window posts the diff card + consent flag; 7 server tests cover leave/remove/consent/archive.</div>
+      </div>
+      <div class="shots">
+        <figure><img src="shots/08-details.png" alt="Crew details"><figcaption>Details — weeks vs goals + rules</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">F6 · Week end</div>
+    <div class="flow">
+      <div>
+        <h2>The recap lands in the chat</h2>
+        <p>After the last day's 3 a.m. grace, the summary card posts: everyone's verdict and the exact money lines, cent-split deterministically. Breakers settle with Venmo/Cash App deep links (amount prefilled), mark paid, and the keeper confirms. A perfect week plays the celebration — once.</p>
+        <ul class="notes">
+          <li><span class="id">S2</span> Everyone kept → streak +1. Everyone broke → no money moves. One keeper takes full stakes.</li>
+          <li><span class="id">S3</span> Gentle nags every 3 days, three times, then silence.</li>
+          <li><span class="id">S4</span> Milestones at 4 / 10 / 26 / 52 weeks.</li>
+        </ul>
+        <div class="check"><b>Verified</b> — Settlement UI test runs the golden loop (lock → run → close → summary → confirm); Celebration UI test proves it plays exactly once. Stake math is property-tested.</div>
+      </div>
+      <div class="shots">
+        <figure><img src="shots/09-summary.png" alt="Weekly summary in chat"><figcaption>Recap in the chat</figcaption></figure>
+        <figure><img src="shots/10-ledger.png" alt="Ledger"><figcaption>Ledger + settle</figcaption></figure>
+        <figure><img src="shots/11-celebrate.png" alt="Perfect week"><figcaption>Perfect week</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">W7 · Home screen</div>
+    <div class="flow">
+      <div>
+        <h2>Widget + dark mode</h2>
+        <p>Small and medium widgets show your seven circles, streak flame, and the day's status; they refresh on every sync and deep-link into the crew. Dark mode is first-class throughout (gym lighting).</p>
+        <p class="notes muted">Widget placement on the home screen is the one manual step — add it from the widget gallery after installing.</p>
+      </div>
+      <div class="shots">
+        <figure><img src="shots/14-home-dark.png" alt="Home dark"><figcaption>Home · dark</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Status</div>
+    <h2>Where the build stands</h2>
+    <p>Roadmap items 1–13 are shipped and verified: 80 server tests (time-traveled weeks, DST, cent-exact splits) and 10 end-to-end UI flows run green in CI on every push. Remaining: the TestFlight gate — the steps that need your accounts (Apple team, APNs key, Fly, R2, Google OAuth) are listed in <span class="id">TESTFLIGHT.md</span> in the repo.</p>
+    <p class="muted">Repo: github.com/Rishiaccelitude/crew · specs: REQUIREMENTS.md · ARCHITECTURE.md · DESIGN.md</p>
+  </section>
+
+  <footer>Crew · flows walkthrough · captures from iPhone 17 Pro simulator, iOS 26.4 · updates in place as flows change</footer>
+</div>
+
+</body>
+</html>
