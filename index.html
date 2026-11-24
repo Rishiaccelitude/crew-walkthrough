@@ -65,7 +65,7 @@
 </style>
 
 <div class="wrap">
-  <div class="eyebrow">Built & verified · Nov 24, 2026 · real simulator captures</div>
+  <div class="eyebrow">Built & verified · Nov 24, 2026 · dark-green uplift · real simulator captures</div>
   <h1>Crew Walkthrough</h1>
   <p class="lede">Every flow below is the actual app running against the real server — each screen is a simulator capture from a seeded three-person crew. Drop change requests into the ROADMAP Inbox and they'll be built. The tiny <span class="id">reminders:64</span> label and the two pill buttons under the strip are dev-only chrome; they don't ship.</p>
 
@@ -89,19 +89,18 @@
   </section>
 
   <section>
-    <div class="eyebrow">F8 · Home</div>
+    <div class="eyebrow">A5 · The opening choice</div>
     <div class="flow">
       <div>
-        <h2>Your crews at a glance</h2>
-        <p>Each row: crew, streak, your seven mini circles, and — when you broke last week — the quiet gold <em>owe</em> chip until it's settled.</p>
+        <h2>One crew. Two paths in.</h2>
+        <p>Signed in without a crew, this is the whole screen: create yours or join your friends'. One crew at a time — once you're in, the crew IS the app.</p>
         <ul class="notes">
-          <li><span class="id">A5</span> Mini week strips live on every row.</li>
-          <li><span class="id">S3</span> "owe $20" chip stays until confirmed or waived.</li>
-          <li>Profile (top-left): name, Venmo/Cash App handles, personal streaks, delete.</li>
+          <li><span class="id">P6</span> Creating or joining while in a crew is refused server-side.</li>
+          <li>Account (top-left): name, Venmo / Cash App / <b>Zelle</b> handles, streaks.</li>
         </ul>
       </div>
       <div class="shots">
-        <figure><img src="shots/02-home.png" alt="Home crew list"><figcaption>Home</figcaption></figure>
+        <figure><img src="shots/02-home.png" alt="Home crew list"><figcaption>Landing</figcaption></figure>
         <figure><img src="shots/12-profile.png" alt="Profile sheet"><figcaption>Profile</figcaption></figure>
       </div>
     </div>
@@ -115,7 +114,7 @@
         <p>Identity (name, emoji, accent, the crew clock) then the contract — every rule preset to a good default. A creator who touches nothing has a great crew. $0 stake is pride mode.</p>
         <ul class="notes">
           <li><span class="id">C2</span> Stake presets, minimum workout, passes, lock time; calorie floor and stacking behind one disclosure.</li>
-          <li>Share sheet auto-opens once after create (<span class="id">J1</span>).</li>
+          <li>Minimum workout is a 20 / 30 / 40 choice; the crew can re-vote it later.</li>
         </ul>
         <div class="check"><b>Verified</b> — CreateCrew UI test builds a crew with untouched defaults.</div>
       </div>
@@ -134,7 +133,7 @@
         <ul class="notes">
           <li><span class="id">K1/K2</span> Every member independent — Mon/Wed/Fri next to "any 4".</li>
           <li><span class="id">K4</span> No commitment by lock → last week's rolls over, announced.</li>
-          <li><span class="id">G2</span> A raised stake blocks the commit sheet until you tap "I'm in".</li>
+          <li>Flexible still lives on the 7 real days — and turns red the moment the target is out of reach.</li>
         </ul>
         <div class="check"><b>Verified</b> — CommitFlow UI test: commit → lock → workout fills the strip live.</div>
       </div>
@@ -170,14 +169,14 @@
     <div class="eyebrow">W8 · Crew details</div>
     <div class="flow">
       <div>
-        <h2>One tap from the chat corner</h2>
-        <p>The ⓘ button opens the whole state: every member's week against the goal they chose, this week's pinned rules, the ledger, history, and the governance controls.</p>
+        <h2>Your crew & the vote</h2>
+        <p>Top-right opens the whole state: every member's week against the goal they chose, this week's locked rules, ledger, history. Settings change by <b>majority vote</b> — anyone proposes, it posts to the chat, the banner collects Agrees, and a majority locks it in for next week.</p>
         <ul class="notes">
-          <li><span class="id">G1</span> Captain edits open only in the recap window (between the weekly recap and the next lock); changes post to chat as a diff card.</li>
+          <li><span class="id">G1</span> One open vote at a time; nothing ever changes mid-week.</li>
           <li><span class="id">G3</span> Leaving mid-week while locked in counts as breaking — said plainly on the confirm.</li>
           <li><span class="id">G4/G5</span> Remove (next week), transfer captaincy, archive once debts settle.</li>
         </ul>
-        <div class="check"><b>Verified</b> — Governance UI test: stake raise in the recap window posts the diff card + consent flag; 7 server tests cover leave/remove/consent/archive.</div>
+        <div class="check"><b>Verified</b> — two Governance UI tests: a solo proposal auto-passes and posts the applied card; a two-member vote agrees from the banner live. Server tests cover majority math, strangers-can't-vote, closed votes, one-at-a-time.</div>
       </div>
       <div class="shots">
         <figure><img src="shots/08-details.png" alt="Crew details"><figcaption>Details — weeks vs goals + rules</figcaption></figure>
@@ -190,7 +189,7 @@
     <div class="flow">
       <div>
         <h2>The recap lands in the chat</h2>
-        <p>After the last day's 3 a.m. grace, the summary card posts: everyone's verdict and the exact money lines, cent-split deterministically. Breakers settle with Venmo/Cash App deep links (amount prefilled), mark paid, and the keeper confirms. A perfect week plays the celebration — once.</p>
+        <p>After the last day's 3 a.m. grace, the summary card posts: everyone's verdict and the exact money lines, cent-split deterministically. Breakers settle with a Venmo deep link (amount prefilled), Cash App, or Zelle (handle copied for your bank app), mark paid, and the keeper confirms. A perfect week plays the celebration — once.</p>
         <ul class="notes">
           <li><span class="id">S2</span> Everyone kept → streak +1. Everyone broke → no money moves. One keeper takes full stakes.</li>
           <li><span class="id">S3</span> Gentle nags every 3 days, three times, then silence.</li>
@@ -215,7 +214,7 @@
         <p class="notes muted">Widget placement on the home screen is the one manual step — add it from the widget gallery after installing.</p>
       </div>
       <div class="shots">
-        <figure><img src="shots/14-home-dark.png" alt="Home dark"><figcaption>Home · dark</figcaption></figure>
+        <figure><img src="shots/14-home-dark.png" alt="Home dark"><figcaption>Landing · dark</figcaption></figure>
       </div>
     </div>
   </section>
@@ -223,7 +222,7 @@
   <section>
     <div class="eyebrow">Status</div>
     <h2>Where the build stands</h2>
-    <p>Roadmap items 1–13 are shipped and verified: 80 server tests (time-traveled weeks, DST, cent-exact splits) and 10 end-to-end UI flows run green in CI on every push. Remaining: the TestFlight gate — the steps that need your accounts (Apple team, APNs key, Fly, R2, Google OAuth) are listed in <span class="id">TESTFLIGHT.md</span> in the repo.</p>
+    <p>Everything buildable is shipped and verified: 80 server tests (time-traveled weeks, DST, cent-exact splits, majority votes, single-crew rule) and 12 end-to-end UI flows run green in CI on every push, after a live security attack pass. The full flow matrix lives in <span class="id">TESTPLAN.md</span>; the credential-gated TestFlight steps (Apple team, APNs key, Fly, R2, Google OAuth, on-device week with friends) in <span class="id">TESTFLIGHT.md</span>.</p>
     <p class="muted">Repo: github.com/Rishiaccelitude/crew · specs: REQUIREMENTS.md · ARCHITECTURE.md · DESIGN.md</p>
   </section>
 
