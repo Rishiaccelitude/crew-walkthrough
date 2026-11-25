@@ -65,168 +65,193 @@
 </style>
 
 <div class="wrap">
-  <div class="eyebrow">Built & verified · Nov 24, 2026 · dark-green uplift, de-bloated · real simulator captures</div>
+  <div class="eyebrow">For review · Nov 25, 2026 · every screen & state · real simulator captures</div>
   <h1>Crew Walkthrough</h1>
-  <p class="lede">Every flow below is the actual app running against the real server — each screen is a simulator capture from a seeded three-person crew. Drop change requests into the ROADMAP Inbox and they'll be built. The tiny <span class="id">reminders:64</span> label and the two pill buttons under the strip are dev-only chrome; they don't ship.</p>
+  <p class="lede">Every screen and state in the app, in the order a user meets them — all real captures of the running app. Reply with feedback per section number (e.g. "3: make the stake chips bigger") and it goes straight into the build. The <span class="id">reminders:64</span> label and the two pill buttons under strips are dev-only chrome — they don't ship.</p>
 
   <section>
-    <div class="eyebrow">F1 · First run</div>
+    <div class="eyebrow">1 · First run</div>
     <div class="flow">
       <div>
-        <h2>Welcome → signed in</h2>
-        <p>Three screens, then done: sign in (Apple), your name, the honest Health ask. The circles on the Welcome screen animate through a week filling green.</p>
+        <h2>Welcome → you → health</h2>
+        <p>Three screens, then done. Sign in with Apple, your name, the honest Health ask — workouts pull automatically; hand-typed entries never count, anywhere.</p>
         <ul class="notes">
-          <li><span class="id">A1</span> Sign in with Apple; Google verifies server-side (SDK lands at TestFlight).</li>
-          <li><span class="id">A3</span> Health is auto-pull only — hand-typed entries never count anywhere.</li>
           <li>Skipping Health leaves a working app with a connect banner.</li>
+          <li>Google sign-in verifies server-side today; its button lands with the OAuth client at TestFlight.</li>
         </ul>
         <div class="check"><b>Verified</b> — Onboarding UI test drives the full flow against the live server.</div>
       </div>
       <div class="shots">
-        <figure><img src="shots/01-welcome.png" alt="Welcome screen"><figcaption>Welcome</figcaption></figure>
+        <figure><img src="shots/01-welcome.png" alt="Welcome"><figcaption>Welcome</figcaption></figure>
+        <figure><img src="shots/21-you.png" alt="Your name"><figcaption>Your name</figcaption></figure>
+        <figure><img src="shots/22-health.png" alt="The health ask"><figcaption>The health ask</figcaption></figure>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="eyebrow">A5 · The opening choice</div>
+    <div class="eyebrow">2 · The opening choice</div>
     <div class="flow">
       <div>
         <h2>One crew. Two paths in.</h2>
-        <p>Signed in without a crew, this is the whole screen: create yours or join your friends'. One crew at a time — once you're in, the crew IS the app.</p>
+        <p>No crew yet → this is the whole screen. One crew at a time; once you're in, the crew IS the app.</p>
         <ul class="notes">
-          <li><span class="id">P6</span> Creating or joining while in a crew is refused server-side.</li>
-          <li>Account (top-left): name, Venmo / Cash App / <b>Zelle</b> handles, streaks.</li>
+          <li>Create or join while already in a crew → refused server-side.</li>
+          <li>Account (top-left): name + Venmo / Cash App / Zelle handles + your streak.</li>
         </ul>
       </div>
       <div class="shots">
-        <figure><img src="shots/02-home.png" alt="Home crew list"><figcaption>Landing</figcaption></figure>
-        <figure><img src="shots/12-profile.png" alt="Profile sheet"><figcaption>Profile</figcaption></figure>
+        <figure><img src="shots/02-home.png" alt="Landing"><figcaption>Landing</figcaption></figure>
+        <figure><img src="shots/14-home-dark.png" alt="Landing · dark"><figcaption>Landing · dark</figcaption></figure>
+        <figure><img src="shots/12-profile.png" alt="Account"><figcaption>Account</figcaption></figure>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="eyebrow">F2 · Create a crew</div>
+    <div class="eyebrow">3 · Create a crew</div>
     <div class="flow">
       <div>
-        <h2>Adjust, don't build</h2>
-        <p>Identity (name, emoji, accent, the crew clock) then the contract — every rule preset to a good default. A creator who touches nothing has a great crew. $0 stake is pride mode.</p>
+        <h2>Identity, then the contract</h2>
+        <p>Name, emoji, color, the crew clock — then the group's rules with every default pre-chosen: stake chips, 20/30/40 minimum, passes, lock time. Touch nothing and it's still a great crew.</p>
         <ul class="notes">
-          <li><span class="id">C2</span> Stake presets, minimum workout, passes, lock time; calorie floor and stacking behind one disclosure.</li>
-          <li>Minimum workout is a 20 / 30 / 40 choice; the crew can re-vote it later.</li>
+          <li>Calorie floor and stacking live behind one disclosure.</li>
+          <li>Any rule can be re-voted later by the crew (section 8).</li>
         </ul>
         <div class="check"><b>Verified</b> — CreateCrew UI test builds a crew with untouched defaults.</div>
       </div>
       <div class="shots">
-        <figure><img src="shots/03-create.png" alt="Create crew"><figcaption>New crew</figcaption></figure>
+        <figure><img src="shots/03-create.png" alt="Identity"><figcaption>Identity</figcaption></figure>
+        <figure><img src="shots/04-contract.png" alt="The contract"><figcaption>The contract</figcaption></figure>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="eyebrow">F4 · Commit & lock</div>
+    <div class="eyebrow">4 · Join a crew</div>
+    <div class="flow">
+      <div>
+        <h2>The stake before the yes</h2>
+        <p>Paste the invite (or tap the link) → the full contract shows, stake first, before any Join button. Joining mid-week makes you a spectator until Monday.</p>
+        <div class="check"><b>Verified</b> — JoinCrew UI test: preview shows $20 before accept; spectator state lands in crew details.</div>
+      </div>
+      <div class="shots">
+        <figure><img src="shots/15-join.png" alt="Invite entry"><figcaption>Invite entry</figcaption></figure>
+        <figure><img src="shots/16-join-preview.png" alt="Preview — contract first"><figcaption>Preview — contract first</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">5 · Commit & lock</div>
     <div class="flow">
       <div>
         <h2>Your week, your terms</h2>
-        <p>One decision: specific days (tap the circles) or flexible (a big rounded number). Frozen at Sunday-night lock; the lock posts a card to the chat naming who's in.</p>
+        <p>Pick specific days (tap the circles — those days then must happen) or stay flexible with a count. Frozen at the Sunday-night lock; the lock posts to the chat naming who's in.</p>
         <ul class="notes">
-          <li><span class="id">K1/K2</span> Every member independent — Mon/Wed/Fri next to "any 4".</li>
-          <li><span class="id">K4</span> No commitment by lock → last week's rolls over, announced.</li>
-          <li>Flexible still lives on the 7 real days — and turns red the moment the target is out of reach.</li>
+          <li>No commitment by lock → last week's rolls over, announced.</li>
+          <li>Specific days show as outlined letters; a committed day you miss goes red.</li>
         </ul>
         <div class="check"><b>Verified</b> — CommitFlow UI test: commit → lock → workout fills the strip live.</div>
       </div>
       <div class="shots">
         <figure><img src="shots/05-commit.png" alt="Commit sheet"><figcaption>Commit sheet</figcaption></figure>
+        <figure><img src="shots/18-days.png" alt="Specific days, live"><figcaption>Specific days, live</figcaption></figure>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="eyebrow">F5 · The week — chat is home</div>
+    <div class="eyebrow">6 · The week — chat is home</div>
     <div class="flow">
       <div>
         <h2>Workouts post themselves</h2>
-        <p>The glass strip holds your circles; chat carries the crew. The moment Apple Health syncs a qualifying workout, the circle springs green (with the one sanctioned haptic) and a card lands in the chat with the source badge. Your own card offers "Add a photo" for 24 hours.</p>
+        <p>Your circles ride on top; the crew talks below. The moment Health syncs a qualifying workout the circle springs green and a card lands in the chat — time, calories, source. Your own card offers “Add a photo” for 24 hours.</p>
         <ul class="notes">
-          <li><span class="id">W4</span> Source always shown; manual entries labeled and never counted.</li>
-          <li><span class="id">P6</span> One real workout counts in every crew you're in (Jake's ride posted to both his crews).</li>
-          <li><span class="id">V6</span> Long-press your ring → play a pass; it goes neutral, never retroactive.</li>
-          <li>Reactions, photos, author-delete; system cards are permanent (<span class="id">W5</span>).</li>
+          <li>Flexible lives on the same 7 days — and turns red the moment the target is out of reach.</li>
+          <li>Tap a face for their full week; long-press your day to play a pass (goes neutral, never retroactive).</li>
+          <li>Reactions, photos, delete-your-own; system cards are permanent.</li>
         </ul>
-        <div class="check"><b>Verified</b> — Chat UI test: a second user's messages land live over the websocket, both directions; FakeHealth UI test: a 35-min run flips today green.</div>
+        <div class="check"><b>Verified</b> — Chat UI test: a second user's messages land live both ways over the websocket; FakeHealth test flips today green from a synced run.</div>
       </div>
       <div class="shots">
-        <figure><img src="shots/06-chat.png" alt="Crew chat"><figcaption>Crew · light</figcaption></figure>
-        <figure><img src="shots/13-chat-dark.png" alt="Crew chat dark"><figcaption>Crew · dark</figcaption></figure>
-        <figure><img src="shots/07-member.png" alt="Member week"><figcaption>Member week + pass</figcaption></figure>
+        <figure><img src="shots/06-chat.png" alt="The crew"><figcaption>The crew</figcaption></figure>
+        <figure><img src="shots/13-chat-dark.png" alt="Dark"><figcaption>Dark</figcaption></figure>
+        <figure><img src="shots/19-doomed.png" alt="Out of reach — reds"><figcaption>Out of reach — reds</figcaption></figure>
+        <figure><img src="shots/07-member.png" alt="A member's week"><figcaption>A member's week</figcaption></figure>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="eyebrow">W8 · Crew details</div>
+    <div class="eyebrow">7 · Your group, one tap</div>
     <div class="flow">
       <div>
-        <h2>Your crew & the vote</h2>
-        <p>Top-right opens the whole state: every member's week against the goal they chose, this week's locked rules, ledger, history. Settings change by <b>majority vote</b> — anyone proposes, it posts to the chat, the banner collects Agrees, and a majority locks it in for next week.</p>
-        <ul class="notes">
-          <li><span class="id">G1</span> One open vote at a time; nothing ever changes mid-week.</li>
-          <li><span class="id">G3</span> Leaving mid-week while locked in counts as breaking — said plainly on the confirm.</li>
-          <li><span class="id">G4/G5</span> Remove (next week), transfer captaincy, archive once debts settle.</li>
-        </ul>
-        <div class="check"><b>Verified</b> — two Governance UI tests: a solo proposal auto-passes and posts the applied card; a two-member vote agrees from the banner live. Server tests cover majority math, strangers-can't-vote, closed votes, one-at-a-time.</div>
+        <h2>Everyone's week vs their goal</h2>
+        <p>Top-right opens the crew: each person against the goal they chose, this week's locked rules (clock included), the ledger and past weeks.</p>
       </div>
       <div class="shots">
-        <figure><img src="shots/08-details.png" alt="Crew details"><figcaption>Details — weeks vs goals + rules</figcaption></figure>
+        <figure><img src="shots/08-details.png" alt="Crew details"><figcaption>Crew details</figcaption></figure>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="eyebrow">F6 · Week end</div>
+    <div class="eyebrow">8 · Changing the rules</div>
+    <div class="flow">
+      <div>
+        <h2>Propose → chat → majority</h2>
+        <p>Anyone proposes. It posts to the chat as a vote card, the banner collects Agrees, and a majority locks it in for next week — nothing ever changes mid-week. One open vote at a time.</p>
+        <div class="check"><b>Verified</b> — Two Governance UI tests: solo proposal auto-applies; a two-member vote agrees live from the banner.</div>
+      </div>
+      <div class="shots">
+        <figure><img src="shots/17-propose.png" alt="Propose a change"><figcaption>Propose a change</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="eyebrow">9 · Week end</div>
     <div class="flow">
       <div>
         <h2>The recap lands in the chat</h2>
-        <p>After the last day's 3 a.m. grace, the summary card posts: everyone's verdict and the exact money lines, cent-split deterministically. Breakers settle with a Venmo deep link (amount prefilled), Cash App, or Zelle (handle copied for your bank app), mark paid, and the keeper confirms. A perfect week plays the celebration — once.</p>
+        <p>After Sunday's 3am grace: who kept, who broke, and the exact charges — cent-split deterministically. Settle by Venmo (amount prefilled), Cash App, or Zelle (handle copied); mark paid, they confirm. A perfect week plays the celebration, once.</p>
         <ul class="notes">
-          <li><span class="id">S2</span> Everyone kept → streak +1. Everyone broke → no money moves. One keeper takes full stakes.</li>
-          <li><span class="id">S3</span> Gentle nags every 3 days, three times, then silence.</li>
-          <li><span class="id">S4</span> Milestones at 4 / 10 / 26 / 52 weeks.</li>
+          <li>Everyone kept → streak +1 and milestones at 4 / 10 / 26 / 52.</li>
+          <li>Everyone broke → no money moves, streak resets, kind copy.</li>
+          <li>Gentle nags every 3 days, three times, then silence.</li>
         </ul>
-        <div class="check"><b>Verified</b> — Settlement UI test runs the golden loop (lock → run → close → summary → confirm); Celebration UI test proves it plays exactly once. Stake math is property-tested.</div>
+        <div class="check"><b>Verified</b> — Settlement UI test runs the whole loop; Celebration test proves once-only; stake math is property-tested.</div>
       </div>
       <div class="shots">
-        <figure><img src="shots/09-summary.png" alt="Weekly summary in chat"><figcaption>Recap in the chat</figcaption></figure>
-        <figure><img src="shots/10-ledger.png" alt="Ledger"><figcaption>Ledger + settle</figcaption></figure>
+        <figure><img src="shots/09-summary.png" alt="Recap in the chat"><figcaption>Recap in the chat</figcaption></figure>
+        <figure><img src="shots/10-ledger.png" alt="Ledger + settle"><figcaption>Ledger + settle</figcaption></figure>
         <figure><img src="shots/11-celebrate.png" alt="Perfect week"><figcaption>Perfect week</figcaption></figure>
       </div>
     </div>
   </section>
 
   <section>
-    <div class="eyebrow">W7 · Home screen</div>
+    <div class="eyebrow">10 · The UI kit</div>
     <div class="flow">
       <div>
-        <h2>Widget + dark mode</h2>
-        <p>Small and medium widgets show your seven circles, streak flame, and the day's status; they refresh on every sync and deep-link into the crew. Dark mode is first-class throughout (gym lighting).</p>
-        <p class="notes muted">Widget placement on the home screen is the one manual step — add it from the widget gallery after installing.</p>
+        <h2>Every component, every state</h2>
+        <p>The design-system catalog the app is built from — day circles, strips, cards, banners, the widget. Feedback on any piece lands everywhere at once.</p>
       </div>
       <div class="shots">
-        <figure><img src="shots/14-home-dark.png" alt="Home dark"><figcaption>Landing · dark</figcaption></figure>
+        <figure><img src="shots/20-kit.png" alt="Component catalog"><figcaption>Component catalog</figcaption></figure>
       </div>
     </div>
   </section>
 
   <section>
     <div class="eyebrow">Status</div>
-    <h2>Where the build stands</h2>
-    <p>Everything buildable is shipped and verified: 80 server tests (time-traveled weeks, DST, cent-exact splits, majority votes, single-crew rule) and 12 end-to-end UI flows run green in CI on every push, after a live security attack pass. The full flow matrix lives in <span class="id">TESTPLAN.md</span>; the credential-gated TestFlight steps (Apple team, APNs key, Fly, R2, Google OAuth, on-device week with friends) in <span class="id">TESTFLIGHT.md</span>.</p>
-    <p class="muted">Repo: github.com/Rishiaccelitude/crew · specs: REQUIREMENTS.md · ARCHITECTURE.md · DESIGN.md</p>
+    <h2>Where it stands</h2>
+    <p>All of the above is tested end to end on every push: 12 UI flows driving the real app + 80 server tests (time-traveled weeks, DST, cent-exact splits, majority votes), after a live security attack pass. A signed Release archive already builds on this Mac — TestFlight needs only your App Store Connect app record + API key (TESTFLIGHT.md, step 1).</p>
+    <p class="muted">Repo: github.com/Rishiaccelitude/crew · TESTPLAN.md has the full flow matrix.</p>
   </section>
 
-  <footer>Crew · flows walkthrough · captures from iPhone 17 Pro simulator, iOS 26.4 · updates in place as flows change</footer>
+  <footer>Crew · complete flow & UI review · iPhone 17 Pro simulator, iOS 26.4 · reply with section numbers to request changes</footer>
 </div>
 
 </body>
