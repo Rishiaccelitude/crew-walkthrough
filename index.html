@@ -77,12 +77,13 @@
         <p>Three screens, then done. Sign in with Apple, your name, the honest Health ask — workouts pull automatically; hand-typed entries never count, anywhere.</p>
         <ul class="notes">
           <li>Skipping Health leaves a working app with a connect banner.</li>
-          <li>Google sign-in verifies server-side today; its button lands with the OAuth client at TestFlight.</li>
+          <li>Google sign-in is fully built (PKCE, no SDK) — the button appears the moment the OAuth client id is pasted into project.yml (TESTFLIGHT.md step). Shown here with a test id.</li>
         </ul>
         <div class="check"><b>Verified</b> — Onboarding UI test drives the full flow against the live server.</div>
       </div>
       <div class="shots">
         <figure><img src="shots/01-welcome.png" alt="Welcome"><figcaption>Welcome</figcaption></figure>
+        <figure><img src="shots/welcome-google.png" alt="Welcome with Google configured"><figcaption>With Google configured</figcaption></figure>
         <figure><img src="shots/21-you.png" alt="Your name"><figcaption>Your name</figcaption></figure>
         <figure><img src="shots/22-health.png" alt="The health ask"><figcaption>The health ask</figcaption></figure>
       </div>
