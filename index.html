@@ -248,7 +248,8 @@
   <section>
     <div class="eyebrow">Status</div>
     <h2>Where it stands</h2>
-    <p>All of the above is tested end to end on every push: 12 UI flows driving the real app + 80 server tests (time-traveled weeks, DST, cent-exact splits, admin approvals), after a live security attack pass. A signed Release archive already builds on this Mac — TestFlight needs only your App Store Connect app record + API key (TESTFLIGHT.md, step 1).</p>
+    <p><b>Ready for friends.</b> 92 server tests + 11 UI flows run on every push — including a fairness suite built on the premise that the admin must not be able to get away with anything: kicking a keeper or deleting your account mid-week still produces the verdict and the debt; account deletion leaves the crew properly, anonymizes you to "Departed member", and keeps the money intact; every rule change pushes to the whole crew (mute or not); one pending request per crew is enforced by the database; the 10-member cap is race-proof; and signing in with Apple on one day and Google the next lands in the same account.</p>
+    <p>RELEASE.md is now the TestFlight gate — automated checks on the actual archive (prod URLs baked in, versions matched app↔widget, privacy manifest present, zero localhost references, clean cold launch with no debug chrome). The gate already caught and fixed two real blockers. What's left is purely credentials: the App Store Connect app record + API key, then <span class="id">fly deploy</span> (TESTFLIGHT.md).</p>
     <p class="muted">Repo: github.com/Rishiaccelitude/crew · TESTPLAN.md has the full flow matrix.</p>
   </section>
 
