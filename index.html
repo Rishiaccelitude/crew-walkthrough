@@ -65,9 +65,9 @@
 </style>
 
 <div class="wrap">
-  <div class="eyebrow">For review · Nov 25, 2026 · every screen & state · real simulator captures</div>
+  <div class="eyebrow">For review · Nov 25, 2026 · rev 3 “Playful Calm” · real simulator captures</div>
   <h1>Crew Walkthrough</h1>
-  <p class="lede">Every screen and state in the app, in the order a user meets them — all real captures of the running app. Reply with feedback per section number (e.g. "3: make the stake chips bigger") and it goes straight into the build. The <span class="id">reminders:64</span> label and the two pill buttons under strips are dev-only chrome — they don't ship.</p>
+  <p class="lede">Every screen and state after the rev-3 redesign — plain day circles with letters above (green done, red missed, blue planned), iMessage-style chat, one settings page, Monday auto-lock weeks, admin-approved rule changes. All real captures of the running app. Reply with feedback per section number (e.g. "3: make the stake chips bigger") and it goes straight into the build. The <span class="id">reminders:64</span> label and the two pill buttons under strips are dev-only chrome — they don't ship.</p>
 
   <section>
     <div class="eyebrow">1 · First run</div>
@@ -97,7 +97,7 @@
         <p>No crew yet → this is the whole screen. One crew at a time; once you're in, the crew IS the app.</p>
         <ul class="notes">
           <li>Create or join while already in a crew → refused server-side.</li>
-          <li>Account (top-left): name + Venmo / Cash App / Zelle handles + your streak.</li>
+          <li>Account (top-left): photo, name, Venmo + Zelle handles. Streaks live in the weekly recap now.</li>
         </ul>
       </div>
       <div class="shots">
@@ -113,10 +113,10 @@
     <div class="flow">
       <div>
         <h2>Identity, then the contract</h2>
-        <p>Name, emoji, color, the crew clock — then the group's rules with every default pre-chosen: stake chips, 20/30/40 minimum, passes, lock time. Touch nothing and it's still a great crew.</p>
+        <p>Name, an optional crew photo (the monogram carries it until then), color, the crew clock — then the group's rules with every default pre-chosen: stake chips, 20/30/40 minimum, passes. Weeks are always Mon–Sun and lock themselves Monday — nothing to configure.</p>
         <ul class="notes">
           <li>Calorie floor and stacking live behind one disclosure.</li>
-          <li>Any rule can be re-voted later by the crew (section 8).</li>
+          <li>Any rule can be changed later by request → admin approval (section 8).</li>
         </ul>
         <div class="check"><b>Verified</b> — CreateCrew UI test builds a crew with untouched defaults.</div>
       </div>
@@ -147,7 +147,7 @@
     <div class="flow">
       <div>
         <h2>Your week, your terms</h2>
-        <p>Pick specific days (tap the circles — those days then must happen) or stay flexible with a count. Frozen at the Sunday-night lock; the lock posts to the chat naming who's in.</p>
+        <p>Pick specific days (those days then must happen) or stay flexible with a count. Editable all week, frozen the moment Monday starts — the lock posts to the chat naming who's in.</p>
         <ul class="notes">
           <li>No commitment by lock → last week's rolls over, announced.</li>
           <li>Specific days show as outlined letters; a committed day you miss goes red.</li>
@@ -166,10 +166,10 @@
     <div class="flow">
       <div>
         <h2>Workouts post themselves</h2>
-        <p>Your circles ride on top; the crew talks below. The moment Health syncs a qualifying workout the circle springs green and a card lands in the chat — time, calories, source. Your own card offers “Add a photo” for 24 hours.</p>
+        <p>One slim strip of circles up top (letters above: green done, red missed, blue planned); the chat owns the rest, iMessage-style — yours right in the crew color, everyone else left with avatars. The moment Health syncs a qualifying workout the circle springs green and a colorful type-tile card lands in the chat. The + next to the message box adds photos or syncs workouts on demand.</p>
         <ul class="notes">
           <li>Flexible lives on the same 7 days — and turns red the moment the target is out of reach.</li>
-          <li>Tap a face for their full week; long-press your day to play a pass (goes neutral, never retroactive).</li>
+          <li>Tap the strip for your full week + pass play; auto-sync can be turned off in your settings.</li>
           <li>Reactions, photos, delete-your-own; system cards are permanent.</li>
         </ul>
         <div class="check"><b>Verified</b> — Chat UI test: a second user's messages land live both ways over the websocket; FakeHealth test flips today green from a synced run.</div>
@@ -188,7 +188,7 @@
     <div class="flow">
       <div>
         <h2>Everyone's week vs their goal</h2>
-        <p>Top-right opens the crew: each person against the goal they chose, this week's locked rules (clock included), the ledger and past weeks.</p>
+        <p>Top-right opens the ONE crew page: who's in, each person against their own goal, every group rule in one card with a 🔒 (changes start Monday), your personal settings (days + auto-sync), the ledger and past weeks.</p>
       </div>
       <div class="shots">
         <figure><img src="shots/08-details.png" alt="Crew details"><figcaption>Crew details</figcaption></figure>
@@ -200,9 +200,9 @@
     <div class="eyebrow">8 · Changing the rules</div>
     <div class="flow">
       <div>
-        <h2>Propose → chat → majority</h2>
-        <p>Anyone proposes. It posts to the chat as a vote card, the banner collects Agrees, and a majority locks it in for next week — nothing ever changes mid-week. One open vote at a time.</p>
-        <div class="check"><b>Verified</b> — Two Governance UI tests: solo proposal auto-applies; a two-member vote agrees live from the banner.</div>
+        <h2>Request → chat → admin approves</h2>
+        <p>Anyone requests a change; it posts to the chat. The admin approves or declines — and the admin's own changes auto-approve but still post publicly. Everything starts the next Monday; nothing ever changes mid-week. One open request at a time.</p>
+        <div class="check"><b>Verified</b> — Two Governance UI tests: the admin's change auto-applies for Monday; a member request is approved live from the banner.</div>
       </div>
       <div class="shots">
         <figure><img src="shots/17-propose.png" alt="Propose a change"><figcaption>Propose a change</figcaption></figure>
@@ -215,7 +215,7 @@
     <div class="flow">
       <div>
         <h2>The recap lands in the chat</h2>
-        <p>After Sunday's 3am grace: who kept, who broke, and the exact charges — cent-split deterministically. Settle by Venmo (amount prefilled), Cash App, or Zelle (handle copied); mark paid, they confirm. A perfect week plays the celebration, once.</p>
+        <p>Monday morning: the recap card shows everyone's circles and consistency, the crew streak, and the exact charges — cent-split deterministically. Settle by Venmo (amount prefilled) or Zelle (handle copied); mark paid, they confirm. A perfect week plays the celebration, once.</p>
         <ul class="notes">
           <li>Everyone kept → streak +1 and milestones at 4 / 10 / 26 / 52.</li>
           <li>Everyone broke → no money moves, streak resets, kind copy.</li>
@@ -247,7 +247,7 @@
   <section>
     <div class="eyebrow">Status</div>
     <h2>Where it stands</h2>
-    <p>All of the above is tested end to end on every push: 12 UI flows driving the real app + 80 server tests (time-traveled weeks, DST, cent-exact splits, majority votes), after a live security attack pass. A signed Release archive already builds on this Mac — TestFlight needs only your App Store Connect app record + API key (TESTFLIGHT.md, step 1).</p>
+    <p>All of the above is tested end to end on every push: 12 UI flows driving the real app + 80 server tests (time-traveled weeks, DST, cent-exact splits, admin approvals), after a live security attack pass. A signed Release archive already builds on this Mac — TestFlight needs only your App Store Connect app record + API key (TESTFLIGHT.md, step 1).</p>
     <p class="muted">Repo: github.com/Rishiaccelitude/crew · TESTPLAN.md has the full flow matrix.</p>
   </section>
 
